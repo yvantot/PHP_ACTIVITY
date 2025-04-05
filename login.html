@@ -8,10 +8,20 @@
 			.no-display {
 				display: none;
 			}
+			body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			form {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			}
 		</style>
 	</head>
 	<body>
-		<a href="./index.php">Index</a>
+		<a href="./index.php">Home</a>
 		<form action="login.php" method="post">
 			<h1 data-action="login">Login</h1>
 			<label>Username</label>
@@ -26,7 +36,7 @@
 				<label>Teacher</label>
 				<input type="radio" name="role" value="teacher" />
 			</div>
-			<input id="sign-in" type="submit" value="Log in" name="logOrSign" />
+			<input id="sign-in" type="submit" value="Log in" name="logOrSign" /><br />
 		</form>
 		<button id="sign-up">Create an account</button>
 	</body>

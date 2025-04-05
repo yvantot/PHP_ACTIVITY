@@ -1,11 +1,6 @@
-<?php     
-    $conn = mysqli_connect("localhost", "root", "", "book_management");    
-    // SQL QUERY v
-    // $insert = "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')"; 
-
-    // Execute the query in the SQL server
-    // mysqli_query($conn, $insert);
-        
+<?php 
+    session_start();
+    $conn = mysqli_connect("localhost", "root", "", "book_management");                
     // LOGIN --> Check whether the account exists in the database    
     if(isset($_POST["logOrSign"]) && $_POST["logOrSign"] == "Log in"){
         if(isset($_POST["username"]) && isset($_POST["password"])){
@@ -19,8 +14,14 @@
 
                 if($row = mysqli_fetch_assoc($result)){
                     if($row["password"] == $user_password){                        
-                        if($row["role"] == "student") header("Location: student-dashboard.php");
-                        if($row["role"] == "teacher") header("Location: teacher-dashboard.php");
+                        if($row["role"] == "student") {
+                            $_SESSION['user_id'] = $row['user_id'];
+                            header("Location: student-dashboard.php");
+                        }
+                        if($row["role"] == "teacher") {
+                            $_SESSION['user_id'] = $row['user_id'];
+                            header("Location: teacher-dashboard.php");
+                        }
                     } else {
                         echo "Wrong Password";
                     }
@@ -58,17 +59,19 @@
                 echo "Please complete the details";
             }
         }
-    } else {
-        echo 'DEFAULT STATE';
     }
- 
-
-    // SIGN UP --> Create an account
-
-
-    // Close the database connection
-    // mysqli_close($conn);
+    mysqli_close($conn);
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+</head>
+<body>
 <?php 
     include("login.html");
 ?>
+</body>
+</html>

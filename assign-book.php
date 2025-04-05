@@ -26,5 +26,5 @@
         }        
     }
 
-    // header("Location: teacher-dashboard.php");   
+     header("Location: teacher-dashboard.php");   
 ?>

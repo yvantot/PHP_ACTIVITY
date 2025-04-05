@@ -5,35 +5,53 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
 			.container {
 				width: fit-content;
 				padding: 1rem;
-				border: 1px solid gray;
+				border: 1px solid black;
+				border-radius: 1rem;
+				margin-bottom: 1rem;
+			}
+			.info {
+				display: flex;
+				flex-direction: column;
+			}
+			.links {
+				display: flex;
+				gap: 1rem;
+				margin-bottom: 1rem;
 			}
 		</style>
 	</head>
 	<body>
 		<h1>Teacher Dashboard</h1>
-		<p>See:</p>
-		<a href="./all-books.php">Books</a>
-		<a href="./assigned-books.php">Assigned books</a>
+		<div class="links">
+			<a href="./all-books.php">Books</a>
+			<a href="./assigned-books.php">Assigned books</a>
+			<a href="./login.php">Log out</a>
+		</div>
 
 		<div class="container">
 			<h3>Add book</h3>
-			<form action="add-book.php" method="post">
+			<form action="add-book.php" class="info" method="post">
 				<label for="">Book title</label>
 				<input type="text" name="title" /><br />
 				<label for="">Book description</label>
 				<input type="text" name="description" /><br />
 				<label for="">Book cover</label>
-				<input type="file" name="coverimage" /><br />
+				<input type="file" name="coverimage" required /><br />
 				<input type="submit" value="Add" />
 			</form>
 		</div>
 
 		<div class="container">
 			<h3>Assign book</h3>
-			<form action="assign-book.php" method="post">
+			<form action="assign-book.php" class="info" method="post">
 				<label for="">Book title</label>
 				<input type="text" name="title" /><br />
 				<label for="">Student username</label>

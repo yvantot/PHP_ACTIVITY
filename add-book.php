@@ -3,7 +3,7 @@
 
     $book_title = $_POST["title"];
     $book_description = $_POST["description"];
-    $book_cover = $_POST["coverimage"];
+    $book_cover = $_POST["coverimage"];            
 
     if($book_title != "" && $book_description != ""){
         $query = "INSERT INTO books (title, description, cover_image) VALUES ('$book_title', '$book_description', '$book_cover')";
@@ -16,7 +16,4 @@
     }
 
     header("Location: teacher-dashboard.php");
-    
-
-
 ?>
