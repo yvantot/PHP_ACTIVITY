@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login</title>
+		<style>
+			.no-display {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="./index.php">Index</a>
+		<form action="login.php" method="post">
+			<h1 data-action="login">Login</h1>
+			<label>Username</label>
+			<input type="text" name="username" />
+			<br />
+			<label>Password</label>
+			<input type="text" name="password" />
+			<br />
+			<div class="role-container no-display">
+				<label>Student</label>
+				<input type="radio" name="role" value="student" checked="true" />
+				<label>Teacher</label>
+				<input type="radio" name="role" value="teacher" />
+			</div>
+			<input id="sign-in" type="submit" value="Log in" name="logOrSign" />
+		</form>
+		<button id="sign-up">Create an account</button>
+	</body>
+	<script>
+		const h1 = document.querySelector("h1");
+		const signIn = document.getElementById("sign-in");
+		const roleContainer = document.querySelector(".role-container");
+
+		document.getElementById("sign-up").addEventListener("click", ({ target }) => {
+			if (h1.dataset.action === "login") {
+				h1.textContent = "Create an account";
+				target.innerText = "Login";
+				signIn.value = "Sign up";
+				h1.dataset.action = "signin";
+				roleContainer.classList.remove("no-display");
+			} else {
+				h1.textContent = "Login";
+				target.innerText = "Sign up";
+				signIn.value = "Log in";
+				h1.dataset.action = "login";
+				roleContainer.classList.add("no-display");
+			}
+		});
+	</script>
+</html>
