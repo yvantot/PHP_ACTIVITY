@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.container {
+				width: fit-content;
+				padding: 1rem;
+				border: 1px solid gray;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Teacher Dashboard</h1>
+		<p>See:</p>
+		<a href="./all-books.php">Books</a>
+		<a href="./assigned-books.php">Assigned books</a>
+
+		<div class="container">
+			<h3>Add book</h3>
+			<form action="add-book.php" method="post">
+				<label for="">Book title</label>
+				<input type="text" name="title" /><br />
+				<label for="">Book description</label>
+				<input type="text" name="description" /><br />
+				<label for="">Book cover</label>
+				<input type="file" name="coverimage" /><br />
+				<input type="submit" value="Add" />
+			</form>
+		</div>
+
+		<div class="container">
+			<h3>Assign book</h3>
+			<form action="assign-book.php" method="post">
+				<label for="">Book title</label>
+				<input type="text" name="title" /><br />
+				<label for="">Student username</label>
+				<input type="text" name="username" /><br />
+				<input type="submit" value="Add" />
+			</form>
+		</div>
+	</body>
+</html>

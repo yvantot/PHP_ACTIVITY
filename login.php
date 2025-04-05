@@ -1,13 +1,5 @@
-<?php 
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $db = "book_management";
-
-    $conn = mysqli_connect($host, $user, $pass, $db);
-    $name = "John Doe";
-    $email = "john@example.com";    
-
+<?php     
+    $conn = mysqli_connect("localhost", "root", "", "book_management");    
     // SQL QUERY v
     // $insert = "INSERT INTO users (username, password, role) VALUES ('$username', '$password', '$role')"; 
 
@@ -18,7 +10,7 @@
     if(isset($_POST["logOrSign"]) && $_POST["logOrSign"] == "Log in"){
         if(isset($_POST["username"]) && isset($_POST["password"])){
             $user_username = $_POST["username"];
-            $user_password = $_POST["password"];
+            $user_password = $_POST["password"];            
 
             if($user_username != "" && $user_password != ""){                
 
@@ -26,8 +18,9 @@
                 $result = mysqli_query($conn, $query);
 
                 if($row = mysqli_fetch_assoc($result)){
-                    if($row["password"] === $user_password){
-                        echo "Correct Password";
+                    if($row["password"] == $user_password){                        
+                        if($row["role"] == "student") header("Location: student-dashboard.php");
+                        if($row["role"] == "teacher") header("Location: teacher-dashboard.php");
                     } else {
                         echo "Wrong Password";
                     }
